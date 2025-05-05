@@ -1,26 +1,502 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Beforce – Coming Soon</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <!-- Vídeo de fondo -->
-  <video id="bg-video" autoplay muted loop>
-    <source src="assets/video/video.mp4" type="video/mp4">
-    Tu navegador no soporta vídeo en HTML5.
-  </video>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Beforce – Coming Soon</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- <link rel="stylesheet" href="https://bootstrapmade.com/assets/css/demo.css?v=52"> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;family=Amatic+SC:wght@400;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+  </head>
+  <body>
+    <header id="header" class="header d-flex align-items-center sticky-top">
+      <div class="container position-relative d-flex align-items-center justify-content-between">
+  
+        <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <img src="assets/img/Logo_1.png" alt="">
+          <!-- <h1 class="sitename">Yummy</h1> -->
+          <!-- <span>.</span> -->
+        </a>
+  
+        <nav id="navmenu" class="navmenu">
+          <!-- <ul>
+            <li><a href="#hero" class="active">Home<br></a></li>
+            <li><a href="#about" class="">About</a></li>
+            <li><a href="#menu" class="">Menu</a></li>
+            <li><a href="#events" class="">Events</a></li>
+            <li><a href="#chefs">Chefs</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li><a href="#">Dropdown 1</a></li>
+                <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                  <ul>
+                    <li><a href="#">Deep Dropdown 1</a></li>
+                    <li><a href="#">Deep Dropdown 2</a></li>
+                    <li><a href="#">Deep Dropdown 3</a></li>
+                    <li><a href="#">Deep Dropdown 4</a></li>
+                    <li><a href="#">Deep Dropdown 5</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Dropdown 2</a></li>
+                <li><a href="#">Dropdown 3</a></li>
+                <li><a href="#">Dropdown 4</a></li>
+              </ul>
+            </li>
+            <li><a href="#contact">Contact</a></li>
+          </ul> -->
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+  
+        <a class="btn-getstarted" href="index.html">Contacto</a>
+  
+      </div>
+    </header>
 
-  <!-- Capa semitransparente para contraste -->
-  <div class="overlay"></div>
+    <section id="menu" class="menu section">
+      <!-- Section Title -->
+      <div
+        class="container section-title aos-init aos-animate"
+        data-aos="fade-up"
+      >
+        <h2>NUESTRO CATALOGO 2025</h2>
+        <p>
+          <span>BEFORCE</span>
+          <span class="description-title">Be ready, be safe!</span>
+        </p>
+      </div>
+      <!-- End Section Title -->
 
-  <!-- Mensaje central -->
-  <div class="content">
-    <h1>Coming Soon</h1>
-  </div>
+      <div class="container">
+        <ul
+          class="nav nav-tabs d-flex justify-content-center aos-init aos-animate"
+          data-aos="fade-up"
+          data-aos-delay="100"
+          role="tablist"
+        >
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link active show"
+              data-bs-toggle="tab"
+              data-bs-target="#menu-starters"
+              aria-selected="true"
+              role="tab"
+            >
+              <h4>Starters</h4>
+            </a>
+          </li>
+          <!-- End tab nav item -->
 
-  <script src="main.js"></script>
-</body>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              data-bs-toggle="tab"
+              data-bs-target="#menu-breakfast"
+              aria-selected="false"
+              tabindex="-1"
+              role="tab"
+            >
+              <h4>Breakfast</h4> </a
+            ><!-- End tab nav item -->
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              data-bs-toggle="tab"
+              data-bs-target="#menu-lunch"
+              aria-selected="false"
+              tabindex="-1"
+              role="tab"
+            >
+              <h4>Lunch</h4>
+            </a>
+          </li>
+          <!-- End tab nav item -->
+
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              data-bs-toggle="tab"
+              data-bs-target="#menu-dinner"
+              aria-selected="false"
+              tabindex="-1"
+              role="tab"
+            >
+              <h4>Dinner</h4>
+            </a>
+          </li>
+          <!-- End tab nav item -->
+        </ul>
+
+        <div
+          class="tab-content aos-init aos-animate"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <div
+            class="tab-pane fade active show"
+            id="menu-starters"
+            role="tabpanel"
+          >
+            <div class="tab-header text-center">
+              <p>Menu</p>
+              <h3>Starters</h3>
+            </div>
+
+            <div class="row gy-5">
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Magnam Tiste</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$5.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Aut Luia</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$14.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Est Eligendi</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$8.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Eos Luibusdam</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$12.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Eos Luibusdam</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$12.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Laboriosam Direva</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$9.95</p>
+              </div>
+              <!-- Menu Item -->
+            </div>
+          </div>
+          <!-- End Starter Menu Content -->
+
+          <div class="tab-pane fade" id="menu-breakfast" role="tabpanel">
+            <div class="tab-header text-center">
+              <p>Menu</p>
+              <h3>Breakfast</h3>
+            </div>
+
+            <div class="row gy-5">
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Magnam Tiste</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$5.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Aut Luia</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$14.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Est Eligendi</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$8.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Eos Luibusdam</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$12.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Eos Luibusdam</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$12.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Laboriosam Direva</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$9.95</p>
+              </div>
+              <!-- Menu Item -->
+            </div>
+          </div>
+          <!-- End Breakfast Menu Content -->
+
+          <div class="tab-pane fade" id="menu-lunch" role="tabpanel">
+            <div class="tab-header text-center">
+              <p>Menu</p>
+              <h3>Lunch</h3>
+            </div>
+
+            <div class="row gy-5">
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Magnam Tiste</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$5.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Aut Luia</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$14.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Est Eligendi</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$8.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Eos Luibusdam</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$12.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Eos Luibusdam</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$12.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Laboriosam Direva</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$9.95</p>
+              </div>
+              <!-- Menu Item -->
+            </div>
+          </div>
+          <!-- End Lunch Menu Content -->
+
+          <div class="tab-pane fade" id="menu-dinner" role="tabpanel">
+            <div class="tab-header text-center">
+              <p>Menu</p>
+              <h3>Dinner</h3>
+            </div>
+
+            <div class="row gy-5">
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Magnam Tiste</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$5.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Aut Luia</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$14.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Est Eligendi</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$8.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Eos Luibusdam</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$12.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Eos Luibusdam</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$12.95</p>
+              </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu-item-1.png" class="glightbox"
+                  ><img
+                    src="assets/img/menu-item-1.png"
+                    class="menu-img img-fluid"
+                    alt=""
+                /></a>
+                <h4>Laboriosam Direva</h4>
+                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
+                <p class="price">$9.95</p>
+              </div>
+              <!-- Menu Item -->
+            </div>
+          </div>
+          <!-- End Dinner Menu Content -->
+        </div>
+      </div>
+    </section>
+    <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>
