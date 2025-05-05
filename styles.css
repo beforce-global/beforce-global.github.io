@@ -1,6 +1,7 @@
 :root {
   scroll-behavior: smooth;
-  --heading-font: "Amatic SC", sans-serif;
+  --heading-font: 'Montserrat', sans-serif;
+  --default-font: 'Montserrat', sans-serif;
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #212529; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #112433; /* Color for headings, subheadings and title throughout the website */
@@ -105,7 +106,7 @@
 }
 
 .menu .tab-content .menu-item .ingredients {
-  font-family: var(--nav-font);
+  font-family: var(--default-font);
   color: color-mix(in srgb, var(--default-color), transparent 50%);
   margin-bottom: 5px;
 }
@@ -159,12 +160,13 @@ section,
   color: var(--heading-color);
   margin: 10px 0 0 0;
   font-size: 48px;
-  font-weight: 500;
+  font-weight: 800;
   font-family: var(--heading-font);
 }
 
 .section-title p .description-title {
   color: var(--accent-color);
+  font-weight: 400;
 }
 /*--------------------------------------------------------------
 # Global Header
@@ -182,7 +184,7 @@ section,
 }
 
 .header .logo img {
-  max-height: 150px;
+  max-height: 150px !important; 
   margin-right: 8px;
 }
 
@@ -202,6 +204,7 @@ section,
 .header .btn-getstarted,
 .header .btn-getstarted:focus {
   color: var(--contrast-color);
+  text-decoration: none;
   background: var(--accent-color);
   font-size: 14px;
   padding: 8px 26px;
@@ -271,7 +274,7 @@ section,
     color: var(--nav-color);
     font-size: 15px;
     padding: 0 2px;
-    font-family: var(--nav-font);
+    font-family: var(--default-font);
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -407,7 +410,7 @@ section,
   .navmenu a:focus {
     color: var(--nav-dropdown-color);
     padding: 10px 20px;
-    font-family: var(--nav-font);
+    font-family: var(--default-font);
     font-size: 17px;
     font-weight: 500;
     display: flex;
