@@ -1,0 +1,83 @@
+:root {
+  scroll-behavior: smooth;
+  --default-font: "Montserrat", sans-serif;
+  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
+  --default-color: #212529; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #112433; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #ec7800; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  min-width: 325px; /* o el ancho que prefieras */
+  overflow-x: hidden; /* habilita scroll horizontal */
+  overflow-y: hidden; /* habilita scroll horizontal */
+}
+/* Layout básico */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #fff;
+  text-align: center;
+}
+.hero__logo {
+  font-size: 5rem;
+  margin-bottom: 2rem;
+  font-weight: 900;
+  font-family: var(--default-font);
+  color: #000;
+}
+
+/* Contenedor de botones con gap de 1px */
+.hero__buttons {
+  display: inline-flex;
+  gap: 1px;
+}
+
+/* Estilos comunes de los botones */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #000;
+  border-radius: 999px;
+  background: transparent;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--default-font);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover: “pulse” y cambio de color */
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Active: efecto “pressed” */
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* Colores específicos en hover */
+.btn--pharma:hover {
+  background: #1663bf;
+  color: white;
+}
+.btn--industrial:hover {
+  background: #ec7800;
+  color: black;
+}
+.btn--industrial {
+  margin-left: 25px;
+}
