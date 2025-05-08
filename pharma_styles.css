@@ -499,3 +499,34 @@ section,
     display: block;
   }
 }
+/* Estilos comunes de los botones */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #000;
+  border-radius: 999px;
+  background: transparent;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--default-font);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover: “pulse” y cambio de color */
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Active: efecto “pressed” */
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn--industrial:hover {
+  background: #ec7800;
+  color: black;
+}
