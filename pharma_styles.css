@@ -376,6 +376,9 @@ section,
 
 /* Mobile Navigation */
 @media (max-width: 1199px) {
+  .reverse-mobile {
+    flex-direction: row-reverse !important;
+  }
   .mobile-nav-toggle {
     color: var(--nav-color);
     font-size: 28px;
