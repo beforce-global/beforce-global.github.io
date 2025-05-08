@@ -81,3 +81,33 @@ body {
 .btn--industrial {
   margin-left: 25px;
 }
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.logo-line {
+  font-family: var(--default-font);
+  font-weight: 900;
+  font-size: 4rem;
+  line-height: 1;
+  color: #000;
+}
+
+@media (max-width: 480px) {
+  .logo-line {
+    font-size: 3rem;
+  }
+
+  .hero__buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .btn--industrial {
+    margin-left: 0;
+  }
+}
