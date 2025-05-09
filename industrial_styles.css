@@ -520,10 +520,10 @@ section,
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  border: 2px solid #000;
+  border: 2px solid var(--heading-color);
   border-radius: 999px;
   background: transparent;
-  color: #000;
+  color: var(--heading-color);
   font-size: 1rem;
   font-weight: 600;
   font-family: var(--default-font);
