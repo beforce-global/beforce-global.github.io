@@ -1,7 +1,7 @@
 :root {
   scroll-behavior: smooth;
-  --heading-font: 'Montserrat', sans-serif;
-  --default-font: 'Montserrat', sans-serif;
+  --heading-font: "Montserrat", sans-serif;
+  --default-font: "Montserrat", sans-serif;
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #212529; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #112433; /* Color for headings, subheadings and title throughout the website */
@@ -184,7 +184,7 @@ section,
 }
 
 .header .logo img {
-  max-height: 150px !important; 
+  max-height: 150px !important;
   margin-right: 8px;
 }
 
@@ -532,4 +532,59 @@ section,
 .btn--industrial:hover {
   background: #ec7800;
   color: var(--heading-color);
+}
+
+/* Contenedor principal del slider con texto */
+.catalog-section {
+  position: relative;
+  height: 60vh;
+  overflow: hidden;
+}
+
+/* Slider Swiper */
+.catalog-slider {
+  width: 100%;
+  height: 100%;
+}
+
+.catalog-slider .swiper-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.catalog-slider .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay oscuro encima de cada slide */
+.catalog-slider .swiper-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* Ajustá opacidad aquí */
+  z-index: 1;
+}
+
+/* Texto superpuesto por encima del slider */
+.catalog-text {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.catalog-text h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.catalog-text .description-title {
+  font-weight: 300;
+  font-size: 1.2rem;
 }

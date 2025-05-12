@@ -14,6 +14,10 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
   </head>
   <body>
     <header id="header" class="header d-flex align-items-center sticky-top">
@@ -68,11 +72,41 @@
         class="container section-title aos-init aos-animate"
         data-aos="fade-up"
       >
-        <h2>NUESTRO CATALOGO 2025</h2>
+        <!-- <h2>NUESTRO CATALOGO 2025</h2>
         <p>
           <span>BEFORCE</span><br />
           <span class="description-title">Be ready, be safe!</span>
-        </p>
+        </p> -->
+
+        <div class="catalog-section">
+          <!-- Texto superpuesto -->
+          <div class="catalog-text">
+            <h2 style="color: white;">NUESTRO CATALOGO 2025</h2>
+            <p>
+              <span style="color: white;">BEFORCE</span><br />
+              <span class="description-title" style="color: white;">Be ready, be safe!</span>
+            </p>
+          </div>
+
+          <!-- Slider con Swiper -->
+          <div class="swiper catalog-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="assets/img/pharma/1.jpg" alt="Slide 1" />
+              </div>
+              <div class="swiper-slide">
+                <img src="assets/img/pharma/2.jpg" alt="Slide 2" />
+              </div>
+              <div class="swiper-slide">
+                <img src="assets/img/pharma/3.jpg" alt="Slide 3" />
+              </div>
+              <div class="swiper-slide">
+                <img src="assets/img/pharma/4.jpg" alt="Slide 3" />
+              </div>
+              
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="container">
@@ -473,7 +507,8 @@
       </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="main.js"></script>
+    <script src="pharma.js"></script>
   </body>
 </html>
