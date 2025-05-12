@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const swiper = new Swiper(".catalog-slider", {
     loop: true,
     autoplay: {
-      delay: 4000,
+      delay: 2000,
       disableOnInteraction: false,
     },
     allowTouchMove: false, // desactiva swipe manual
