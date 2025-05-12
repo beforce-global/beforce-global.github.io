@@ -588,3 +588,32 @@ section,
   font-weight: 300;
   font-size: 1.2rem;
 }
+
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+  background-color: #1663bf; /* azul BEFORCE */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#backToTop:hover {
+  background-color: #112433;
+  color: white;
+}
+
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+}
