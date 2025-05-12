@@ -121,11 +121,22 @@ body {
   margin-left: 25px;
 }
 .hero__content {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* distribuye el espacio */
+  align-items: center;
+  height: 100vh;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.hero__item {
+  flex: 1;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
 }
 
 .logo-line {
