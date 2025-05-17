@@ -1,6 +1,4 @@
-# Beforce – Coming Soon
-
-Página estática “Coming Soon” para Beforce, desplegada con GitHub Pages.
+# Beforce 
 
 ---
 
