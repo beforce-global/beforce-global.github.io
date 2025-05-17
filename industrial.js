@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const lightbox = GLightbox({
+    selector: ".glightbox",
+  });
+
   const colorSelectors = document.querySelectorAll(".color-circle");
 
   colorSelectors.forEach(function (circle) {

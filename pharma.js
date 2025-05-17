@@ -1,5 +1,9 @@
 // main.js
 document.addEventListener("DOMContentLoaded", () => {
+  const lightbox = GLightbox({
+    selector: ".glightbox",
+  });
+
   const swiper = new Swiper(".catalog-slider", {
     loop: true,
     autoplay: {
