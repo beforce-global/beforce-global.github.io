@@ -37,9 +37,30 @@
 }
 
 @media (max-width: 575px) {
+  .menu .nav-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
+    margin-bottom: 1rem;
+  }
+
   .menu .nav-link {
-    margin: 0 10px;
-    padding: 10px 0;
+    border-radius: 25px;
+    padding: 0.35rem 1rem; /* ✅ padding más compacto */
+    margin: 0;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+    color: var(--default-color);
+    background-color: #fff;
+    transition: all 0.2s ease;
+  }
+
+  .menu .nav-link.active {
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    font-weight: 600;
   }
 }
 
