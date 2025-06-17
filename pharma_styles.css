@@ -631,3 +631,65 @@ section,
 .color-circle:hover {
   border: 2px solid #000;
 }
+/* Bloque contenedor con padding y centrado */
+.color-code-section {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Estilo para la lista de códigos */
+.color-code-section ul {
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.color-code-section li {
+  font-size: 14px;
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Punto de color */
+.color-code-section li span {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 1.2em;
+}
+
+/* Estilo de tabla responsive */
+.color-code-table {
+  overflow-x: auto;
+  margin-top: 15px;
+}
+
+.color-code-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.color-code-table th,
+.color-code-table td {
+  padding: 10px 12px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.color-code-table th {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .color-code-section {
+    padding: 15px;
+  }
+
+  .color-code-table th,
+  .color-code-table td {
+    font-size: 13px;
+    padding: 8px;
+  }
+}
