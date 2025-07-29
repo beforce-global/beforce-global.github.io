@@ -702,7 +702,6 @@ section,
 }
 
 .footer-logos {
-  display: flex;
   justify-content: center;
   align-items: center;
   gap: 40px;
@@ -711,7 +710,7 @@ section,
 }
 
 .footer-logos img {
-  height: 60px;
+  height: 100px;
   max-width: 150px;
   object-fit: contain;
 }
