@@ -16,7 +16,7 @@
 }
 /* PHARMA */
 .menu .nav-item.pharma .nav-link {
-  border-bottom: 2px solid transparent;
+  border-bottom: 2px solid #1662bf31;
   color: var(--default-color);
 }
 
@@ -28,7 +28,7 @@
 
 /* INDUSTRIAL */
 .menu .nav-item.industrial .nav-link {
-  border-bottom: 2px solid transparent;
+  border-bottom: 2px solid #ec7a0036;
   color: var(--default-color);
 }
 
