@@ -4,54 +4,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Beforce – Be Ready, Be Safe!</title>
-    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <meta name="description" content="Indumentaria médica e industrial. Ropa de seguridad, cofias, barbijos, y más. BEFORCE – Be Ready, Be Safe.">
+
+    <!-- SEO: Open Graph (redes sociales) -->
+    <meta property="og:title" content="Beforce – Be Ready, Be Safe!">
+    <meta property="og:description" content="Indumentaria médica e industrial. Ropa de seguridad, cofias, barbijos, y más.">
+    <meta property="og:image" content="https://beforce.ar/assets/img/favicon.png">
+    <meta property="og:url" content="https://beforce.ar">
+    <meta property="og:type" content="website">
+
+    <!-- SEO: Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Beforce – Be Ready, Be Safe!">
+    <meta name="twitter:description" content="Indumentaria médica e industrial. Ropa de seguridad, cofias, barbijos, y más.">
+    <meta name="twitter:image" content="https://beforce.ar/assets/img/favicon.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+
+    <!-- Preconnect & fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;800&display=swap" rel="stylesheet" />
+
+    <!-- Estilos -->
     <link rel="stylesheet" href="index_style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;family=Amatic+SC:wght@400;700&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap"
-      rel="stylesheet"
-    />
   </head>
+
   <body>
-    <section class="hero">
-      <!-- Video para Pharma -->
-      <video class="hero__bg hero__bg-left" autoplay muted loop playsinline>
-        <source src="assets/video/pharma.mp4" type="video/mp4" />
-Tu navegador no soporta video HTML5.
-      </video>
+    <main>
+      <section class="hero" aria-label="Video de presentación Beforce">
+        <!-- Video para Pharma -->
+        <video class="hero__bg hero__bg-left" autoplay muted loop playsinline preload="none">
+          <source src="assets/video/pharma.mp4" type="video/mp4" />
+          Tu navegador no soporta video HTML5.
+        </video>
 
-      <!-- Video para Industrial -->
-      <video class="hero__bg hero__bg-right" autoplay muted loop playsinline>
-        <source src="assets/video/industrial.mp4" type="video/mp4" />
-      </video>
+        <!-- Video para Industrial -->
+        <video class="hero__bg hero__bg-right" autoplay muted loop playsinline preload="none">
+          <source src="assets/video/industrial.mp4" type="video/mp4" />
+          Tu navegador no soporta video HTML5.
+        </video>
 
-      <!-- Overlay oscuro -->
-      <div class="hero__overlay"></div>
+        <div class="hero__overlay"></div>
 
-      <div class="hero__content">
-        <div class="hero__item">
+        <div class="hero__content">
+          <!-- Botones de divisiones (si los activás en el futuro) -->
           <!-- <a href="pharma.html" class="btn btn--pharma">Pharma Division</a> -->
-        </div>
-        
-        <a href="catalog.html" style="text-decoration: none;">
-          <div class="hero__item">
+
+          <a href="catalog.html" class="hero__item" style="text-decoration: none;" title="Ir al catálogo de productos Beforce">
             <div class="logo-line top">BE</div>
             <div class="logo-line middle">FORCE</div>
-          </div>
-        </a>
+          </a>
 
-        <div class="hero__item">
-          <!-- <a href="industrial.html" class="btn btn--industrial"
-            >Industrial Division</a
-          > -->
+          <!-- <a href="industrial.html" class="btn btn--industrial">Industrial Division</a> -->
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="main.js"></script>
+    <!-- Scripts optimizados -->
+    <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script src="main.js" defer></script>
   </body>
 </html>
