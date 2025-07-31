@@ -1,4 +1,8 @@
 // main.js
 document.addEventListener('DOMContentLoaded', () => {
-    // console.log('Beforce “Coming Soon” page loaded');
+   
+  var currentYear = new Date().getFullYear();
+  document.getElementById("copyright").innerHTML = currentYear + " © Copyright <strong><span>BEFORCE</span></strong>. Todos los derechos reservados. Argentina, Buenos Aires.";
+
+
   });
