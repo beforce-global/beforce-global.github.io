@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo REDIMER</title>
+    <meta
+      name="description"
+      content="Catálogo web estilo revista con transición limpia y layout tipo revista."
+    />
+    <link rel="icon" href="../assets/img/favicon.png" type="image/png" />
+    <style>
+      :root {
+        --bg: #d7d0c7;
+        --bg-2: #cfc6bb;
+        --ink: #161616;
+        --muted: #706960;
+
+        --paper: #f8f3ea;
+        --paper-2: #efe6d8;
+        --paper-edge: #d6cbbd;
+        --cover-1: #d9c8b4;
+        --cover-2: #c8b39a;
+
+        --ui: rgba(255, 255, 255, 0.82);
+        --ui-border: rgba(0, 0, 0, 0.08);
+
+        --shadow-xl: 0 32px 80px rgba(0, 0, 0, 0.22);
+        --shadow-lg: 0 18px 42px rgba(0, 0, 0, 0.16);
+        --shadow-md: 0 10px 24px rgba(0, 0, 0, 0.12);
+
+        --page-w: min(42vw, 620px);
+        --page-h: calc(var(--page-w) * 1.414);
+
+        --radius-lg: 22px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(
+            circle at top,
+            rgba(255, 255, 255, 0.45),
+            transparent 30%
+          ),
+          linear-gradient(180deg, var(--bg), var(--bg-2));
+      }
+
+      body.is-dragging {
+        user-select: none;
+        cursor: grabbing;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .app {
+        min-height: 100vh;
+      }
+
+      .layout {
+        min-height: 100vh;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      .viewer {
+        min-width: 0;
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: 1fr;
+      }
+
+      .stage {
+        position: relative;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            circle at center,
+            rgba(255, 255, 255, 0.18),
+            transparent 45%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(84, 69, 52, 0.22),
+            rgba(84, 69, 52, 0.08)
+          );
+      }
+
+      .book-shell {
+        width: min(100%, 100vw);
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        position: relative;
+        padding: 24px 84px;
+        margin-top: 70px;
+      }
+
+      .book-area {
+        position: relative;
+        width: calc(var(--page-w) * 2);
+        height: var(--page-h);
+        transform-origin: center center;
+        transition: transform 0.2s ease;
+        touch-action: pan-y;
+        perspective: 2400px;
+        transform-style: preserve-3d;
+      }
+
+      .book-shadow {
+        position: absolute;
+        inset: auto 5% -18px;
+        height: 42px;
+        filter: blur(16px);
+        background: rgba(0, 0, 0, 0.24);
+        border-radius: 999px;
+        z-index: 0;
+      }
+
+      .book-base {
+        position: absolute;
+        inset: 0;
+        border-radius: 12px;
+        background: linear-gradient(180deg, #d7cbbd, #cbbfad);
+        box-shadow: var(--shadow-xl);
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .book-base::before,
+      .book-base::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 50%;
+        pointer-events: none;
+      }
+
+      .book-base::before {
+        left: 0;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.24), transparent 15%),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.2), transparent 22%);
+      }
+
+      .book-base::after {
+        right: 0;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.24), transparent 15%),
+          linear-gradient(270deg, rgba(255, 255, 255, 0.2), transparent 22%);
+      }
+
+      .gutter-shadow {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 36px;
+        transform: translateX(-50%);
+        background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.14),
+          rgba(255, 255, 255, 0.06) 35%,
+          rgba(0, 0, 0, 0.18) 50%,
+          rgba(255, 255, 255, 0.06) 65%,
+          rgba(0, 0, 0, 0.14)
+        );
+        filter: blur(10px);
+        opacity: 0.55;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .pages-layer,
+      .flip-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+      }
+
+      .spread-static {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .page-static,
+      .page-face {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(180deg, var(--paper), var(--paper-2));
+      }
+
+      .page-static.left,
+      .page-face.left {
+        border-right: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .page-static .page-content:has(.mag-full-photo) {
+        background: transparent;
+      }
+      .page-static.is-blank,
+      .page-face.is-blank {
+        background: linear-gradient(180deg, #e8dccd, #d7c8b5);
+      }
+
+      .page-static.is-blank::after,
+      .page-face.is-blank::after {
+        display: none;
+      }
+
+      .page-static.is-cover,
+      .page-face.is-cover {
+        background: linear-gradient(180deg, var(--cover-1), var(--cover-2));
+        box-shadow:
+          0 14px 34px rgba(0, 0, 0, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.28);
+      }
+
+      .page-static.is-cover::after,
+      .page-face.is-cover::after {
+        background:
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.18),
+            transparent 24%,
+            rgba(0, 0, 0, 0.12)
+          ),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 20%);
+      }
+
+      .page-content {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        background: transparent;
+      }
+      .page-static.is-blank .page-content,
+      .page-face.is-blank .page-content {
+        display: none;
+      }
+
+      .page-number {
+        position: absolute;
+        bottom: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.95);
+        letter-spacing: 0.04em;
+        z-index: 30;
+      }
+
+      .page-number::before,
+      .page-number::after {
+        content: "";
+        width: 74px;
+        height: 1px;
+        background: currentColor;
+        opacity: 0.65;
+        position: absolute;
+        top: 50%;
+      }
+
+      .page-number::before {
+        right: calc(100% + 12px);
+      }
+
+      .page-number::after {
+        left: calc(100% + 12px);
+      }
+
+      .flip-layer {
+        pointer-events: none;
+      }
+
+      .page-fade {
+        position: absolute;
+        inset: 0;
+        z-index: 7;
+        opacity: 0;
+        transform: translateX(0);
+        transition:
+          opacity 0.28s ease,
+          transform 0.28s ease;
+      }
+
+      .page-fade.is-enter {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .page-fade.is-next {
+        transform: translateX(18px);
+      }
+
+      .page-fade.is-prev {
+        transform: translateX(-18px);
+      }
+
+      .edge-hit {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 72px;
+        z-index: 10;
+        cursor: pointer;
+      }
+
+      .edge-hit.left {
+        left: 0;
+        cursor: w-resize;
+      }
+
+      .edge-hit.right {
+        right: 0;
+        cursor: e-resize;
+      }
+
+      .nav-fab {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+        width: 58px;
+        height: 58px;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        background: rgba(255, 255, 255, 0.84);
+        box-shadow: var(--shadow-lg);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          opacity 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .nav-fab:hover {
+        transform: translateY(-50%) scale(1.03);
+        box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18);
+      }
+
+      .nav-fab[disabled] {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+
+      .nav-fab.left {
+        left: 18px;
+      }
+
+      .nav-fab.right {
+        right: 18px;
+      }
+
+      .floating-ui {
+        position: fixed;
+        top: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 12px;
+      }
+
+      .ui-btn,
+      .zoom-btn,
+      .viewer__meta {
+        border: 1px solid var(--ui-border);
+        background: var(--ui);
+        color: var(--ink);
+        border-radius: 999px;
+        box-shadow: var(--shadow-md);
+        backdrop-filter: blur(12px);
+      }
+
+      .ui-btn,
+      .zoom-btn {
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          background 0.2s ease,
+          opacity 0.2s ease;
+        cursor: pointer;
+      }
+
+      .ui-btn:hover,
+      .zoom-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 22px rgba(0, 0, 0, 0.12);
+      }
+
+      .ui-btn {
+        min-height: 44px;
+        padding: 0 16px;
+      }
+
+      .zoom-btn {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        padding: 0;
+      }
+
+      .viewer__meta {
+        padding: 10px 16px;
+        color: var(--muted);
+      }
+
+      .mag-page {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+      }
+      .mag-page.dark {
+        color: #fff;
+        background: transparent;
+      }
+
+      .mag-full-photo {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        overflow: hidden;
+      }
+
+      .mag-full-photo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        object-position: center;
+      }
+
+      .mag-full-overlay {
+        display: none;
+      }
+
+      @media (max-width: 980px) {
+        :root {
+          --page-w: min(88vw, 620px);
+        }
+
+        .book-shell {
+          width: 100%;
+          min-height: 100vh;
+          padding: 18px 16px 44px;
+        }
+
+        .book-area {
+          width: var(--page-w);
+          height: var(--page-h);
+        }
+
+        .spread-static {
+          grid-template-columns: 1fr;
+        }
+
+        .book-base,
+        .spread-static {
+          width: 100%;
+        }
+
+        .page-static.left,
+        .gutter-shadow,
+        .edge-hit.left {
+          display: none;
+        }
+
+        .page-static.right {
+          width: 100% !important;
+          left: 0 !important;
+        }
+
+        .floating-ui {
+          top: 12px;
+          gap: 8px;
+        }
+
+        .page-number {
+          bottom: 10px;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .book-shell {
+          padding: 12px 8px 36px;
+        }
+
+        .nav-fab.left {
+          left: 10px;
+        }
+
+        .nav-fab.right {
+          right: 10px;
+        }
+
+        .viewer__meta {
+          padding: 9px 14px;
+        }
+
+        .floating-ui {
+          width: calc(100% - 20px);
+        }
+
+        .ui-btn {
+          min-height: 40px;
+          padding: 0 14px;
+        }
+
+        .zoom-btn {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app">
+      <div class="floating-ui">
+        <div class="viewer__meta" id="spreadInfo">1 de 9</div>
+
+        <button
+          class="zoom-btn"
+          id="zoomOutBtn"
+          type="button"
+          aria-label="Alejar"
+        >
+          −
+        </button>
+        <div class="viewer__meta" id="zoomInfo">100%</div>
+        <button
+          class="zoom-btn"
+          id="zoomInBtn"
+          type="button"
+          aria-label="Acercar"
+        >
+          +
+        </button>
+
+        <button class="ui-btn" id="fitBtn" type="button">Reestablecer</button>
+        <!-- <button class="ui-btn" id="fullscreenBtn" type="button">Pantalla completa</button> -->
+      </div>
+
+      <main class="layout">
+        <section class="viewer">
+          <div class="stage">
+            <div class="book-shell">
+              <button
+                class="nav-fab left"
+                id="prevFab"
+                type="button"
+                aria-label="Página anterior"
+              >
+                ❮
+              </button>
+
+              <button
+                class="nav-fab right"
+                id="nextFab"
+                type="button"
+                aria-label="Página siguiente"
+              >
+                ❯
+              </button>
+
+              <div class="book-area" id="bookArea">
+                <div class="book-shadow"></div>
+                <div class="book-base"></div>
+                <div class="gutter-shadow"></div>
+
+                <div class="pages-layer">
+                  <div class="spread-static">
+                    <div class="page-static left" id="leftSlot">
+                      <div class="page-content" id="leftPage"></div>
+                    </div>
+                    <div class="page-static right" id="rightSlot">
+                      <div class="page-content" id="rightPage"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flip-layer" id="flipLayer"></div>
+
+                <div
+                  class="edge-hit left"
+                  id="edgeLeft"
+                  aria-hidden="true"
+                ></div>
+                <div
+                  class="edge-hit right"
+                  id="edgeRight"
+                  aria-hidden="true"
+                ></div>
+
+                <div class="page-number" id="pageNumber">1</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const pages = [
+        {
+          id: 1,
+          title: "Portada",
+          src: "/redimer/1.jpg",
+          render: () => `
+            <section class="mag-page dark">
+              <div class="mag-full-photo">
+                <img src="/redimer/1.jpg" alt="Portada catálogo /apexpro" />
+              </div>
+            </section>
+          `,
+        },
+        {
+          id: 11,
+          title: "Página 11",
+          src: "/redimer/11.jpg",
+          render: () => `
+            <section class="mag-page dark">
+              <div class="mag-full-photo">
+                <img src="/redimer/11.jpg" alt="Página 11 del catálogo" />
+              </div>
+            </section>
+          `,
+        },
+        {
+          id: 2,
+          title: "Página 2",
+          src: "/redimer/2.jpg",
+          render: () => `
+            <section class="mag-page dark">
+              <div class="mag-full-photo">
+                <img src="/redimer/2.jpg" alt="Página 2 del catálogo" />
+              </div>
+            </section>
+          `,
+        },
+        {
+          id: 3,
+          title: "Página 3",
+          src: "/redimer/3.jpg",
+          render: () => `
+            <section class="mag-page dark">
+              <div class="mag-full-photo">
+                <img src="/redimer/3.jpg" alt="Página 3 del catálogo" />
+              </div>
+            </section>
+          `,
+        },
+        {
+          id: 4,
+          title: "Página 4",
+          src: "/redimer/4.jpg",
+          render: () => `
+            <section class="mag-page dark">
+              <div class="mag-full-photo">
+                <img src="/redimer/4.jpg" alt="Página 4 del catálogo" />
+              </div>
+            </section>
+          `,
+        },
+        {
+          id: 5,
+          title: "Página 5",
+          src: "/redimer/5.jpg",
+          render: () => `
+            <section class="mag-page dark">
+              <div class="mag-full-photo">
+                <img src="/redimer/5.jpg" alt="Página 5 del catálogo" />
+              </div>
+            </section>
+          `,
+        },
+        {
+          id: 6,
+          title: "Página 6",
+          src: "/redimer/6.jpg",
+          render: () => `
+            <section class="mag-page dark">
+              <div class="mag-full-photo">
+                <img src="/redimer/6.jpg" alt="Página 6 del catálogo" />
+              </div>
+            </section>
+          `,
+        },
+        {
+          id: 7,
+          title: "Página 7",
+          src: "/redimer/7.jpg",
+          render: () => `
+            <section class="mag-page dark">
+              <div class="mag-full-photo">
+                <img src="/redimer/7.jpg" alt="Página 7 del catálogo" />
+              </div>
+            </section>
+          `,
+        },
+        {
+          id: 8,
+          title: "Página 8",
+          src: "/redimer/8.jpg",
+          render: () => `
+            <section class="mag-page dark">
+              <div class="mag-full-photo">
+                <img src="/redimer/8.jpg" alt="Página 8 del catálogo" />
+              </div>
+            </section>
+          `,
+        },
+        {
+          id: 9,
+          title: "Página 9",
+          src: "/redimer/9.jpg",
+          render: () => `
+            <section class="mag-page dark">
+              <div class="mag-full-photo">
+                <img src="/redimer/9.jpg" alt="Página 9 del catálogo" />
+              </div>
+            </section>
+          `,
+        },
+        {
+          id: 10,
+          title: "Página 10",
+          src: "/redimer/10.jpg",
+          render: () => `
+            <section class="mag-page dark">
+              <div class="mag-full-photo">
+                <img src="/redimer/10.jpg" alt="Página 10 del catálogo" />
+              </div>
+            </section>
+          `,
+        },
+
+        {
+          id: 12,
+          title: "Contratapa",
+          src: "/redimer/12.jpg",
+          render: () => `
+            <section class="mag-page dark">
+              <div class="mag-full-photo">
+                <img src="/redimer/12.jpg" alt="Contratapa catálogo /apexpro" />
+              </div>
+            </section>
+          `,
+        },
+      ];
+
+      (() => {
+        const leftPage = document.getElementById("leftPage");
+        const rightPage = document.getElementById("rightPage");
+        const flipLayer = document.getElementById("flipLayer");
+
+        const pageNumber = document.getElementById("pageNumber");
+        const spreadInfo = document.getElementById("spreadInfo");
+        const zoomInfo = document.getElementById("zoomInfo");
+
+        const bookArea = document.getElementById("bookArea");
+
+        const prevFab = document.getElementById("prevFab");
+        const nextFab = document.getElementById("nextFab");
+
+        const edgeLeft = document.getElementById("edgeLeft");
+        const edgeRight = document.getElementById("edgeRight");
+
+        const zoomInBtn = document.getElementById("zoomInBtn");
+        const zoomOutBtn = document.getElementById("zoomOutBtn");
+        const fitBtn = document.getElementById("fitBtn");
+        const fullscreenBtn = document.getElementById("fullscreenBtn");
+
+        let zoom = 1;
+        let isFlipping = false;
+        let currentViewIndex = 0;
+
+        const isSingleMode = () => window.innerWidth <= 980;
+
+        function preloadImages() {
+          pages.forEach((page) => {
+            const img = new Image();
+            img.src = page.src;
+          });
+        }
+
+        function getDesktopViews() {
+          const views = [];
+          if (!pages.length) return views;
+
+          views.push({
+            kind: "cover",
+            left: null,
+            right: 0,
+            firstPageNo: 1,
+            lastPageNo: 1,
+          });
+
+          for (let i = 1; i < pages.length; i += 2) {
+            const left = i;
+            const right = i + 1 < pages.length ? i + 1 : null;
+
+            views.push({
+              kind: right === null ? "back" : "spread",
+              left,
+              right,
+              firstPageNo: left + 1,
+              lastPageNo: right !== null ? right + 1 : left + 1,
+            });
+          }
+
+          return views;
+        }
+
+        function getMobileViews() {
+          return pages.map((page, index) => ({
+            kind:
+              index === 0
+                ? "cover"
+                : index === pages.length - 1
+                  ? "back"
+                  : "single",
+            left: null,
+            right: index,
+            firstPageNo: index + 1,
+            lastPageNo: index + 1,
+          }));
+        }
+
+        function getViews() {
+          return isSingleMode() ? getMobileViews() : getDesktopViews();
+        }
+
+        function clampViewIndex(index) {
+          const views = getViews();
+          return Math.max(0, Math.min(index, views.length - 1));
+        }
+
+        function getPage(index) {
+          return pages[index] || null;
+        }
+
+        function clearSlotClasses(slot) {
+          slot.classList.remove("is-blank", "is-cover");
+        }
+
+        function renderPageContent(target, page, options = {}) {
+          const { blank = false, cover = false } = options;
+          const slot = target.parentElement;
+
+          clearSlotClasses(slot);
+          slot.classList.toggle("is-blank", blank);
+          slot.classList.toggle("is-cover", cover);
+
+          if (blank || !page) {
+            target.innerHTML = "";
+            return;
+          }
+
+          target.innerHTML = page.render();
+        }
+
+        function renderStaticPair(leftIndex, rightIndex, options = {}) {
+          const {
+            blankLeft = false,
+            blankRight = false,
+            coverLeft = false,
+            coverRight = false,
+          } = options;
+
+          renderPageContent(
+            leftPage,
+            leftIndex !== null ? getPage(leftIndex) : null,
+            { blank: blankLeft, cover: coverLeft },
+          );
+
+          renderPageContent(
+            rightPage,
+            rightIndex !== null ? getPage(rightIndex) : null,
+            { blank: blankRight, cover: coverRight },
+          );
+        }
+
+        function updateInfo(view) {
+          if (!view) return;
+
+          if (view.firstPageNo === view.lastPageNo) {
+            spreadInfo.textContent = `Página ${view.firstPageNo} de ${pages.length}`;
+            pageNumber.textContent = String(view.firstPageNo);
+          } else {
+            spreadInfo.textContent = `Páginas ${view.firstPageNo}–${view.lastPageNo} de ${pages.length}`;
+            pageNumber.textContent = String(view.lastPageNo);
+          }
+
+          const canGoPrev = currentViewIndex > 0;
+          const canGoNext = currentViewIndex < getViews().length - 1;
+
+          prevFab.disabled = !canGoPrev;
+          nextFab.disabled = !canGoNext;
+        }
+
+        function updateStaticView() {
+          const views = getViews();
+          const view = views[currentViewIndex];
+          if (!view) return;
+
+          if (isSingleMode()) {
+            renderStaticPair(null, view.right, {
+              blankLeft: true,
+              coverRight: view.kind === "cover" || view.kind === "back",
+            });
+          } else {
+            renderStaticPair(view.left, view.right, {
+              blankLeft: view.left === null,
+              coverRight: view.kind === "cover" || view.kind === "back",
+            });
+          }
+
+          updateInfo(view);
+        }
+
+        function applyZoom() {
+          bookArea.style.transform = `scale(${zoom})`;
+          zoomInfo.textContent = `${Math.round(zoom * 100)}%`;
+        }
+
+        function animateFlip(direction, targetViewIndex) {
+          if (isFlipping) return null;
+
+          const views = getViews();
+          const toView = views[targetViewIndex];
+
+          if (!toView || targetViewIndex === currentViewIndex) return null;
+
+          isFlipping = true;
+
+          const fadeLayer = document.createElement("div");
+          fadeLayer.className = `page-fade ${direction === "next" ? "is-next" : "is-prev"}`;
+
+          const tempSpread = document.createElement("div");
+          tempSpread.className = "spread-static";
+          tempSpread.style.position = "absolute";
+          tempSpread.style.inset = "0";
+
+          const tempLeft = document.createElement("div");
+          tempLeft.className = "page-static left";
+          const tempLeftContent = document.createElement("div");
+          tempLeftContent.className = "page-content";
+          tempLeft.appendChild(tempLeftContent);
+
+          const tempRight = document.createElement("div");
+          tempRight.className = "page-static right";
+          const tempRightContent = document.createElement("div");
+          tempRightContent.className = "page-content";
+          tempRight.appendChild(tempRightContent);
+
+          tempSpread.append(tempLeft, tempRight);
+          fadeLayer.appendChild(tempSpread);
+          flipLayer.innerHTML = "";
+          flipLayer.appendChild(fadeLayer);
+
+          if (isSingleMode()) {
+            renderPageContent(tempLeftContent, null, { blank: true });
+            renderPageContent(tempRightContent, getPage(toView.right), {
+              cover: toView.kind === "cover" || toView.kind === "back",
+            });
+          } else {
+            renderPageContent(
+              tempLeftContent,
+              toView.left !== null ? getPage(toView.left) : null,
+              { blank: toView.left === null },
+            );
+
+            renderPageContent(tempRightContent, getPage(toView.right), {
+              cover: toView.kind === "cover" || toView.kind === "back",
+            });
+          }
+
+          requestAnimationFrame(() => {
+            fadeLayer.classList.add("is-enter");
+          });
+
+          fadeLayer.addEventListener(
+            "transitionend",
+            () => {
+              currentViewIndex = targetViewIndex;
+              flipLayer.innerHTML = "";
+              isFlipping = false;
+              updateStaticView();
+            },
+            { once: true },
+          );
+        }
+
+        function goToView(index, preferDirection = null) {
+          const targetIndex = clampViewIndex(index);
+          if (targetIndex === currentViewIndex) return;
+
+          const direction =
+            preferDirection ||
+            (targetIndex > currentViewIndex ? "next" : "prev");
+
+          animateFlip(direction, targetIndex);
+        }
+
+        function next() {
+          goToView(currentViewIndex + 1, "next");
+        }
+
+        function prev() {
+          goToView(currentViewIndex - 1, "prev");
+        }
+
+        function pointerStart(side) {
+          if (isFlipping) return;
+          side === "right" ? next() : prev();
+        }
+
+        function bindEvents() {
+          prevFab?.addEventListener("click", prev);
+          nextFab?.addEventListener("click", next);
+
+          edgeRight?.addEventListener("mousedown", () => pointerStart("right"));
+          edgeLeft?.addEventListener("mousedown", () => pointerStart("left"));
+
+          edgeRight?.addEventListener(
+            "touchstart",
+            () => pointerStart("right"),
+            { passive: true },
+          );
+
+          edgeLeft?.addEventListener("touchstart", () => pointerStart("left"), {
+            passive: true,
+          });
+
+          window.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowRight") next();
+            if (e.key === "ArrowLeft") prev();
+          });
+
+          zoomInBtn?.addEventListener("click", () => {
+            zoom = Math.min(1.4, +(zoom + 0.1).toFixed(2));
+            applyZoom();
+          });
+
+          zoomOutBtn?.addEventListener("click", () => {
+            zoom = Math.max(0.85, +(zoom - 0.1).toFixed(2));
+            applyZoom();
+          });
+
+          fitBtn?.addEventListener("click", () => {
+            zoom = 1;
+            applyZoom();
+          });
+
+          fullscreenBtn?.addEventListener("click", async () => {
+            if (!document.fullscreenElement) {
+              await document.documentElement.requestFullscreen?.();
+            } else {
+              await document.exitFullscreen?.();
+            }
+          });
+
+          window.addEventListener("resize", () => {
+            currentViewIndex = clampViewIndex(currentViewIndex);
+            updateStaticView();
+          });
+        }
+
+        preloadImages();
+        bindEvents();
+        applyZoom();
+        updateStaticView();
+      })();
+    </script>
+  </body>
+</html>
