@@ -8,7 +8,7 @@
       name="description"
       content="Catálogo web estilo revista con transición limpia y layout tipo revista."
     />
-
+    <link rel="icon" href="assets/img/favicon.png" type="image/png" />
     <style>
       :root {
         --bg: #d7d0c7;
@@ -586,13 +586,25 @@
   <body>
     <div class="app">
       <div class="floating-ui">
- 
         <div class="viewer__meta" id="spreadInfo">1 de 9</div>
 
-
-        <button class="zoom-btn" id="zoomOutBtn" type="button" aria-label="Alejar">−</button>
+        <button
+          class="zoom-btn"
+          id="zoomOutBtn"
+          type="button"
+          aria-label="Alejar"
+        >
+          −
+        </button>
         <div class="viewer__meta" id="zoomInfo">100%</div>
-        <button class="zoom-btn" id="zoomInBtn" type="button" aria-label="Acercar">+</button>
+        <button
+          class="zoom-btn"
+          id="zoomInBtn"
+          type="button"
+          aria-label="Acercar"
+        >
+          +
+        </button>
 
         <button class="ui-btn" id="fitBtn" type="button">Reestablecer</button>
         <!-- <button class="ui-btn" id="fullscreenBtn" type="button">Pantalla completa</button> -->
@@ -638,8 +650,16 @@
 
                 <div class="flip-layer" id="flipLayer"></div>
 
-                <div class="edge-hit left" id="edgeLeft" aria-hidden="true"></div>
-                <div class="edge-hit right" id="edgeRight" aria-hidden="true"></div>
+                <div
+                  class="edge-hit left"
+                  id="edgeLeft"
+                  aria-hidden="true"
+                ></div>
+                <div
+                  class="edge-hit right"
+                  id="edgeRight"
+                  aria-hidden="true"
+                ></div>
 
                 <div class="page-number" id="pageNumber">1</div>
               </div>
@@ -772,7 +792,6 @@
 
         const bookArea = document.getElementById("bookArea");
 
-
         const prevFab = document.getElementById("prevFab");
         const nextFab = document.getElementById("nextFab");
 
@@ -884,13 +903,13 @@
           renderPageContent(
             leftPage,
             leftIndex !== null ? getPage(leftIndex) : null,
-            { blank: blankLeft, cover: coverLeft }
+            { blank: blankLeft, cover: coverLeft },
           );
 
           renderPageContent(
             rightPage,
             rightIndex !== null ? getPage(rightIndex) : null,
-            { blank: blankRight, cover: coverRight }
+            { blank: blankRight, cover: coverRight },
           );
         }
 
@@ -907,7 +926,6 @@
 
           const canGoPrev = currentViewIndex > 0;
           const canGoNext = currentViewIndex < getViews().length - 1;
-
 
           prevFab.disabled = !canGoPrev;
           nextFab.disabled = !canGoNext;
@@ -982,7 +1000,7 @@
             renderPageContent(
               tempLeftContent,
               toView.left !== null ? getPage(toView.left) : null,
-              { blank: toView.left === null }
+              { blank: toView.left === null },
             );
 
             renderPageContent(tempRightContent, getPage(toView.right), {
@@ -1002,7 +1020,7 @@
               isFlipping = false;
               updateStaticView();
             },
-            { once: true }
+            { once: true },
           );
         }
 
@@ -1031,7 +1049,6 @@
         }
 
         function bindEvents() {
-
           prevFab?.addEventListener("click", prev);
           nextFab?.addEventListener("click", next);
 
@@ -1041,14 +1058,12 @@
           edgeRight?.addEventListener(
             "touchstart",
             () => pointerStart("right"),
-            { passive: true }
+            { passive: true },
           );
 
-          edgeLeft?.addEventListener(
-            "touchstart",
-            () => pointerStart("left"),
-            { passive: true }
-          );
+          edgeLeft?.addEventListener("touchstart", () => pointerStart("left"), {
+            passive: true,
+          });
 
           window.addEventListener("keydown", (e) => {
             if (e.key === "ArrowRight") next();
