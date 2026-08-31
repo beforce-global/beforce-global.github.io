@@ -290,6 +290,44 @@ section,
   margin-right: 8px;
 }
 
+/* Dual logo lockup (used on catalog.html, which serves both divisions) */
+.header .logo--dual {
+  gap: 14px;
+}
+
+.header .logo__mark {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  transition: opacity 0.25s ease;
+}
+
+.header .logo__mark:hover {
+  opacity: 0.75;
+}
+
+.header .logo--dual img {
+  max-height: 42px !important;
+  margin-right: 0;
+}
+
+.header .logo__divider {
+  width: 1px;
+  height: 30px;
+  background: var(--line);
+  flex: none;
+}
+
+@media (max-width: 480px) {
+  .header .logo--dual {
+    gap: 8px;
+  }
+
+  .header .logo--dual img {
+    max-height: 34px !important;
+  }
+}
+
 .header .logo h1 {
   font-size: 30px;
   margin: 0;
