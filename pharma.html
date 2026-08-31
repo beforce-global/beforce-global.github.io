@@ -7,16 +7,14 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
     <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="pharma_styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;family=Amatic+SC:wght@400;700&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
       href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap"
       rel="stylesheet"
     />
     <link
@@ -33,37 +31,20 @@
           href="index.html"
           class="logo d-flex align-items-center me-auto me-xl-0"
         >
-          <img src="assets/img/pharma_logo-removebg-preview.png" alt="" />
+          <img src="assets/img/pharma_logo-removebg-preview.png" alt="Beforce Pharma" />
         </a>
 
         <nav id="navmenu" class="navmenu">
-          <!-- <ul>
-            <li><a href="#hero" class="active">Home<br></a></li>
-            <li><a href="#about" class="">About</a></li>
-            <li><a href="#menu" class="">Menu</a></li>
-            <li><a href="#events" class="">Events</a></li>
-            <li><a href="#chefs">Chefs</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Dropdown 1</a></li>
-                <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                  <ul>
-                    <li><a href="#">Deep Dropdown 1</a></li>
-                    <li><a href="#">Deep Dropdown 2</a></li>
-                    <li><a href="#">Deep Dropdown 3</a></li>
-                    <li><a href="#">Deep Dropdown 4</a></li>
-                    <li><a href="#">Deep Dropdown 5</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Dropdown 2</a></li>
-                <li><a href="#">Dropdown 3</a></li>
-                <li><a href="#">Dropdown 4</a></li>
-              </ul>
-            </li>
-            <li><a href="#contact">Contact</a></li>
-          </ul> -->
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="catalog.html">Catálogo</a></li>
+            <li><a href="industrial.html">Industrial</a></li>
+            <li><a href="pharma.html" class="active">Pharma</a></li>
+          </ul>
+          <button type="button" class="mobile-nav-toggle d-xl-none" aria-label="Abrir menú" aria-controls="navmenu">
+            <svg class="icon-open" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <svg class="icon-close" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
         </nav>
 
         <a class="btn btn--industrial" href="industrial.html"
@@ -1383,10 +1364,38 @@
       </div>
     </section>
 
+    <footer class="site-footer">
+      <div class="footer-logos">
+        <img
+          src="assets/img/pharma_logo-removebg-preview.png"
+          alt="BEFORCE Pharma"
+        />
+        <img
+          src="assets/img/industrial_logo-removebg-preview.png"
+          alt="BEFORCE Industrial"
+        />
+      </div>
+      <div class="footer-content">
+        <p id="copyright"></p>
+        <ul class="footer-links">
+          <li><a href="industrial.html">Industrial Division</a></li>
+          <li><a href="https://www.instagram.com/beforceglobal/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="/terminos.html">Términos y Condiciones</a></li>
+          <li><a href="/privacidad.html">Política de Privacidad</a></li>
+        </ul>
+      </div>
+    </footer>
+
     <button id="backToTop" title="Volver arriba">↑</button>
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="pharma.js"></script>
+    <script src="nav.js"></script>
+    <script>
+      document.getElementById("copyright").innerHTML =
+        new Date().getFullYear() +
+        " © Copyright <strong><span>BEFORCE</span></strong>. Todos los derechos reservados. Argentina, Buenos Aires.";
+    </script>
   </body>
 </html>

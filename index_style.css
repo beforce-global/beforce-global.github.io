@@ -350,6 +350,16 @@ body {
   }
 }
 
+/* Mobile: stacked halves — keep the division tags out of the way of the
+   centered wordmark by pinning them to the top of each half instead of
+   the bottom (where they would collide with the vertically centered content). */
+@media (max-width: 767px) {
+  .hero__tag {
+    top: 1rem;
+    bottom: auto;
+  }
+}
+
 /* Desktop: side-by-side split */
 @media (min-width: 768px) {
   .hero {

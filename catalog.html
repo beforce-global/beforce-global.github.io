@@ -7,13 +7,10 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
     <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="industrial_styles.css" />
-    <!-- <link rel="stylesheet" href="https://bootstrapmade.com/assets/css/demo.css?v=52"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;family=Amatic+SC:wght@400;700&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -36,21 +33,22 @@
         >
           <img
             src="assets/img/industrial_logo-removebg-preview.png"
-            alt="imagen del logo de beforce industrial"
+            alt="Beforce"
           />
         </a>
 
         <nav id="navmenu" class="navmenu">
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="catalog.html" class="active">Catálogo</a></li>
+            <li><a href="industrial.html">Industrial</a></li>
+            <li><a href="pharma.html">Pharma</a></li>
+          </ul>
+          <button type="button" class="mobile-nav-toggle d-xl-none" aria-label="Abrir menú" aria-controls="navmenu">
+            <svg class="icon-open" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <svg class="icon-close" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
         </nav>
-        <!-- <a class="btn btn--pharma" href="pharma.html">Pharma Division</a>
-          -->
-        <img
-          src="assets/img/pharma_logo-removebg-preview.png"
-          alt="imagen del logo de beforce pharma"
-          style="max-height: 150px"
-        />
-        <!-- <a class="btn-getstarted" href="index.html">Contacto</a> -->
       </div>
     </header>
 
@@ -2908,14 +2906,11 @@
       <div class="footer-content">
         <p id="copyright"></p>
         <ul class="footer-links">
-          <!-- <li><a href="/contacto.html">Contacto</a></li> -->
+          <li><a href="industrial.html">Industrial</a></li>
+          <li><a href="pharma.html">Pharma</a></li>
+          <li><a href="https://www.instagram.com/beforceglobal/" target="_blank" rel="noopener">Instagram</a></li>
           <li><a href="/terminos.html">Términos y Condiciones</a></li>
           <li><a href="/privacidad.html">Política de Privacidad</a></li>
-          <!-- <li>
-            <a href="https://www.instagram.com/beforceglobal/" target="_blank"
-              >Instagram</a
-            >
-          </li> -->
         </ul>
       </div>
     </footer>
@@ -2927,5 +2922,6 @@
     <script src="industrial.js"></script>
     <script src="pharma.js"></script>
     <script src="main.js"></script>
+    <script src="nav.js"></script>
   </body>
 </html>
