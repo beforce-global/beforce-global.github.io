@@ -350,13 +350,16 @@ body {
   }
 }
 
-/* Mobile: stacked halves — keep the division tags out of the way of the
-   centered wordmark by pinning them to the top of each half instead of
-   the bottom (where they would collide with the vertically centered content). */
+/* Mobile: stacked halves — center each division tag inside its own half
+   (both axes) instead of anchoring it to a corner, and keep it clear of
+   the wordmark block, which sits centered on the full hero, not each half. */
 @media (max-width: 767px) {
   .hero__tag {
-    top: 1rem;
+    top: 50%;
     bottom: auto;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
   }
 }
 
