@@ -1,5 +1,10 @@
 // nav.js — shared header/nav behaviour for industrial.html, pharma.html, catalog.html
 document.addEventListener("DOMContentLoaded", () => {
+  const currentYear = new Date().getFullYear();
+  document.querySelectorAll(".catalog-year").forEach((el) => {
+    el.textContent = currentYear;
+  });
+
   const body = document.body;
   const toggle = document.querySelector(".mobile-nav-toggle");
   const navmenu = document.getElementById("navmenu");
