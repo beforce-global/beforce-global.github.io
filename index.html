@@ -25,41 +25,75 @@
     <!-- Preconnect & fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <!-- Estilos -->
     <link rel="stylesheet" href="index_style.css" />
   </head>
 
   <body>
-    <main>
-      <section class="hero" aria-label="Video de presentación Beforce">
-        <!-- Video para Pharma -->
-        <video class="hero__bg hero__bg-left" autoplay muted loop playsinline preload="none">
-          <source src="assets/video/pharma.mp4" type="video/mp4" />
-          Tu navegador no soporta video HTML5.
-        </video>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
 
-        <!-- Video para Industrial -->
-        <video class="hero__bg hero__bg-right" autoplay muted loop playsinline preload="none">
-          <source src="assets/video/industrial.mp4" type="video/mp4" />
-          Tu navegador no soporta video HTML5.
-        </video>
+    <main id="main">
+      <section class="hero" aria-label="Presentación Beforce">
+        <div class="hero__grain" aria-hidden="true"></div>
 
-        <div class="hero__overlay"></div>
+        <a href="industrial.html" class="hero__half hero__half--industrial" aria-label="Ir a Beforce Industrial">
+          <video class="hero__bg" autoplay muted loop playsinline preload="none">
+            <source src="assets/video/industrial.mp4" type="video/mp4" />
+          </video>
+          <div class="hero__half-overlay"></div>
+          <span class="hero__tag hero__tag--right">
+            <span class="hero__tag-index">02</span>
+            <span class="hero__tag-label">Industrial</span>
+            <svg class="hero__tag-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+
+        <a href="pharma.html" class="hero__half hero__half--pharma" aria-label="Ir a Beforce Pharma">
+          <video class="hero__bg" autoplay muted loop playsinline preload="none">
+            <source src="assets/video/pharma.mp4" type="video/mp4" />
+          </video>
+          <div class="hero__half-overlay"></div>
+          <span class="hero__tag hero__tag--left">
+            <span class="hero__tag-index">01</span>
+            <span class="hero__tag-label">Pharma</span>
+            <svg class="hero__tag-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+
+        <div class="hero__seam" aria-hidden="true"></div>
 
         <div class="hero__content">
-          <!-- Botones de divisiones (si los activás en el futuro) -->
-          <!-- <a href="pharma.html" class="btn btn--pharma">Pharma Division</a> -->
+          <p class="hero__eyebrow">Indumentaria técnica &amp; de seguridad</p>
 
-          <a href="catalog.html" class="hero__item" style="text-decoration: none;" title="Ir al catálogo de productos Beforce">
-            <div class="logo-line top">BE</div>
-            <div class="logo-line middle">FORCE</div>
+          <a href="catalog.html" class="hero__wordmark" title="Ir al catálogo de productos Beforce">
+            <span class="hero__word hero__word--be">BE</span><span class="hero__word hero__word--force">FORCE</span>
           </a>
 
-          <!-- <a href="industrial.html" class="btn btn--industrial">Industrial Division</a> -->
+          <p class="hero__tagline">Be Ready<span class="hero__dot">·</span>Be Safe</p>
+
+          <a href="catalog.html" class="hero__cta">
+            <span>Ver catálogo 2025</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="hero__scroll" aria-hidden="true">
+          <span></span>
         </div>
       </section>
+
+      <footer class="site-strip">
+        <div class="site-strip__inner">
+          <p class="site-strip__copy" id="copyright"></p>
+          <ul class="site-strip__links">
+            <li><a href="https://www.instagram.com/beforceglobal/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="/terminos.html">Términos</a></li>
+            <li><a href="/privacidad.html">Privacidad</a></li>
+          </ul>
+        </div>
+      </footer>
     </main>
 
     <!-- Scripts optimizados -->
